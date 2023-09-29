@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DirectorController;
+use App\Http\Controllers\MovieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,11 +20,15 @@ use App\Http\Controllers\DirectorController;
 |
 */
 
+
+# public routes
 Route::controller(RegisterController::class)->group(function(){
     Route::post('register', 'register');
     Route::post('login', 'login');
 });
+Route::resource('movies', MovieController::class);
 
+#only for admin
 Route::middleware(['auth:sanctum', 'restrictRole:admin'])->group( function () {
     Route::resource('genres', GenreController::class);
     Route::resource('countries', CountryController::class);
