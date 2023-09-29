@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreGenreRequest;
-use App\Http\Requests\UpdateGenreRequest;
+use Illuminate\Http\Request;
+use App\Http\Controllers\BaseController as BaseController;
 use App\Models\Genre;
+use Validator;
+use App\Http\Resources\GenreResource;
 
-class GenreController extends Controller
+class GenreController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -15,72 +17,85 @@ class GenreController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $genres = Genre::all();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $this->sendResponse(GenreResource::collection($genres), 'Genres retrieved successfully.');
     }
-
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreGenreRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreGenreRequest $request)
+    public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        $validator = Validator::make($input, [
+            'name' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return $this->sendError('Validation Error.', $validator->errors());
+        }
+
+        $genre = Genre::create($input);
+
+        return $this->sendResponse(new GenreResource($genre), 'Genre created successfully.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Genre  $genre
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Genre $genre)
+    public function show($id)
     {
-        //
-    }
+        $genre = Genre::find($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Genre  $genre
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Genre $genre)
-    {
-        //
+        if (is_null($genre)) {
+            return $this->sendError('Genre not found.');
+        }
+
+        return $this->sendResponse(new GenreResource($genre), 'Genre retrieved successfully.');
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateGenreRequest  $request
-     * @param  \App\Models\Genre  $genre
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateGenreRequest $request, Genre $genre)
+    public function update(Request $request, Genre $genre)
     {
-        //
+        $input = $request->all();
+
+        $validator = Validator::make($input, [
+            'name' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return $this->sendError('Validation Error.', $validator->errors());
+        }
+
+        $genre->name = $input['name'];
+        $genre->save();
+
+        return $this->sendResponse(new GenreResource($genre), 'Genre updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Genre  $genre
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Genre $genre)
     {
-        //
+        $genre->delete();
+
+        return $this->sendResponse([], 'Genre deleted successfully.');
     }
 }
