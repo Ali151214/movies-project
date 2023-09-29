@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\GenreController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\DirectorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +26,6 @@ Route::controller(RegisterController::class)->group(function(){
 
 Route::middleware(['auth:sanctum', 'restrictRole:admin'])->group( function () {
     Route::resource('genres', GenreController::class);
+    Route::resource('countries', CountryController::class);
+    Route::resource('directors', DirectorController::class);
 });
