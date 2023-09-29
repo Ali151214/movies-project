@@ -84,6 +84,13 @@ class MovieController extends BaseController
 
         $validator = Validator::make($input, [
             'name' => 'required',
+            'description' => 'required',
+            'release_date' => 'required',
+            'ticket_price' => 'required',
+            'photo' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'genre_id' => 'required|exists:App\Models\Genre,id',
+            'country_id' => 'required|exists:App\Models\Country,id',
+            'director_id' => 'required|exists:App\Models\Director,id',
         ]);
 
         if($validator->fails()){

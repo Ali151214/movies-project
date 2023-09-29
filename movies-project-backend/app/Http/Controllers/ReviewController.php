@@ -76,7 +76,10 @@ class ReviewController extends BaseController
         $input = $request->all();
 
         $validator = Validator::make($input, [
-            'name' => 'required',
+            'comment' => 'required',
+            'rating' => 'required|min:1|max:5',
+            'movie_id' => 'required|exists:App\Models\Movie,id',
+            'user_id' => 'required|exists:App\Models\User,id',
         ]);
 
         if($validator->fails()){
