@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DirectorController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\MovieController;
 
 /*
@@ -27,6 +28,7 @@ Route::controller(RegisterController::class)->group(function(){
     Route::post('login', 'login');
 });
 Route::resource('movies', MovieController::class);
+Route::resource('reviews', ReviewController::class);
 
 #only for admin
 Route::middleware(['auth:sanctum', 'restrictRole:admin'])->group( function () {
