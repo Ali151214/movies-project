@@ -12,6 +12,9 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { RegisterComponent } from './register/register.component';
 import { LogoutComponent } from './logout/logout.component';
 import {HttpCallerInterceptor} from "./services/http-caller-interceptor/http-caller.interceptor";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -20,14 +23,17 @@ import {HttpCallerInterceptor} from "./services/http-caller-interceptor/http-cal
     NavbarComponent,
     LoginComponent,
     RegisterComponent,
-    LogoutComponent
+    LogoutComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     {
