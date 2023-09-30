@@ -42,7 +42,7 @@ class MovieController extends BaseController
             'director_id' => 'required|exists:App\Models\Director,id',
         ]);
 
-        $image_path = $request->file('photo')->store('image', 'public');
+        $image_path = $request->file('photo')->store('', 'public');
         $input["photo"] = $image_path;
 
         if($validator->fails()){

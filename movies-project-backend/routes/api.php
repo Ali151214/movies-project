@@ -34,12 +34,21 @@ Route::controller(MovieController::class)->group(function(){
     Route::get('movies', 'index');
     Route::get('movies/{id}', 'show');
 });
+Route::controller(GenreController::class)->group(function(){
+    Route::get('genres', 'index');
+    Route::get('genres/{id}', 'show');
+});
+Route::controller(CountryController::class)->group(function(){
+    Route::get('countries', 'index');
+    Route::get('countries/{id}', 'show');
+});
+Route::controller(DirectorController::class)->group(function(){
+    Route::get('directors', 'index');
+    Route::get('directors/{id}', 'show');
+});
 
 #only for admin
 Route::middleware(['auth:sanctum', 'restrictRole:admin'])->group( function () {
-    Route::resource('genres', GenreController::class);
-    Route::resource('countries', CountryController::class);
-    Route::resource('directors', DirectorController::class);
     Route::controller(ReviewController::class)->group(function(){
         Route::post('reviews', 'store');
     });
@@ -47,6 +56,21 @@ Route::middleware(['auth:sanctum', 'restrictRole:admin'])->group( function () {
         Route::post('movies', 'store');
         Route::put('movies/{id}', 'update');
         Route::delete('movies/{id}', 'destroy');
+    });
+    Route::controller(DirectorController::class)->group(function(){
+        Route::post('directors', 'store');
+        Route::put('directors/{id}', 'update');
+        Route::delete('directors/{id}', 'destroy');
+    });
+    Route::controller(CountryController::class)->group(function(){
+        Route::post('countries', 'store');
+        Route::put('countries/{id}', 'update');
+        Route::delete('countries/{id}', 'destroy');
+    });
+    Route::controller(GenreController::class)->group(function(){
+        Route::post('genres', 'store');
+        Route::put('genres/{id}', 'update');
+        Route::delete('genres/{id}', 'destroy');
     });
 });
 

@@ -22,7 +22,7 @@ class MovieResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'ticket_price' => $this->ticket_price,
-            'photo' => asset("storage/")."/".$this->photo,
+            'photo' => asset("storage/image")."/".$this->photo,
             'release_date' => $this->release_date,
             'genre' => Genre::find($this->genre_id)->name,
             'director' => Director::find($this->director_id)->name,
