@@ -9,7 +9,9 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 export class HttpCallerService {
   base_url = "http://localhost:8000/api/"
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {
+
+  }
 
   get(url: string, is_private = false): any {
     let header = new HttpHeaders()

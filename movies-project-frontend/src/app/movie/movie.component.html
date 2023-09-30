@@ -1,3 +1,4 @@
+<script src="movie.component.ts"></script>
 <div class="modal fade" id="movieModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -24,7 +25,7 @@
               </tr>
               <tr>
                 <td class="p-2">Ticket Price</td>
-                <td class="p-2">{{movie['ticket_price']}}</td>
+                <td class="p-2">${{movie['ticket_price']}}</td>
               </tr>
               <tr>
                 <td class="p-2">Country</td>
@@ -37,6 +38,16 @@
               <tr>
                 <td class="p-2">Director</td>
                 <td class="p-2">{{movie['director']}}</td>
+              </tr>
+              <tr>
+                <td class="p-2">Reviews</td>
+                <td class="p-2">
+                  <div class="row">
+                    <div class="col-sm-12 p-2" style="border: 1px solid #000;" *ngFor="let review of reviews">
+                      <span *ngFor="let star of stars(review['rating'])">&#11088;</span>&nbsp;&nbsp;&nbsp;<span>{{review["comment"]}}</span>
+                    </div>
+                  </div>
+                </td>
               </tr>
             </table>
           </div>

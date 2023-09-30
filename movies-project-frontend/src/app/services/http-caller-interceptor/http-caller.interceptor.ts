@@ -30,6 +30,9 @@ export class HttpCallerInterceptor implements HttpInterceptor {
         else if (request.url.includes("register")){
           errorMsg = `Error: Invalid inputs.`;
         }
+        else if (request.url.includes("reviews")){
+          errorMsg = `Error: Login to give review.`;
+        }
         else if (error.error instanceof ErrorEvent) {
           errorMsg = `Error: ${error.error.message}`;
         } else {

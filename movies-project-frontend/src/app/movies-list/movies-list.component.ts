@@ -13,6 +13,7 @@ export class MoviesListComponent {
   directors = [];
   countries = [];
   selectedMovie = {"id": -1, "name": "", "photo": "", "release_date": "", "ticket_price": 0, "genre": "", "director": "", "country": "", "description": ""};
+  selectedMovieReviews = [];
 
   constructor(private http_caller: HttpCallerService) {}
 
@@ -52,6 +53,13 @@ export class MoviesListComponent {
       this.selectedMovie = result.data;
       // @ts-ignore
       document.getElementById("openMovieModalButton").click();
+    });
+    this.FetchReviews(movie_id);
+  }
+
+  FetchReviews(movie_id: number){
+    this.http_caller.get("reviews?movie_id="+movie_id).subscribe((result: any) => {
+      this.selectedMovieReviews = result.data;
     });
   }
 

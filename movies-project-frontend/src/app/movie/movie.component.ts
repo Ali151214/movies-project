@@ -12,6 +12,7 @@ export class MovieComponent {
   reviewForm!: FormGroup;
   @Output() accessTokenEvent = new EventEmitter<string>();
   @Input() movie = {"id": -1, "name": "", "photo": "", "release_date": "", "ticket_price": 0, "genre": "", "director": "", "country": "", "description": ""};
+  @Input() reviews = [{"rating": 5, "comment": "Dummy comment."}];
 
   constructor(private http_caller: HttpCallerService, private toast: ToastService) {
 
@@ -38,11 +39,13 @@ export class MovieComponent {
       "comment": this.commentField.value,
       "movie_id": this.movie["id"]
     }
-    this.http_caller.post("reviews", form_data).subscribe((result: any) => {
-      let access_token = result["data"]["token"];
-      this.http_caller.setAuthToken(access_token);
-      this.accessTokenEvent.emit(access_token);
-      this.toast.showSuccessToast("Login successful.");
+    this.http_caller.post("reviews", form_data, true).subscribe((result: any) => {
+      this.toast.showSuccessToast("Review saved.");
+      this.reviewForm.reset();
     });
+  }
+
+  stars(i: number){
+    return Array(i).fill(0);
   }
 }
