@@ -11,7 +11,7 @@ import {ToastService} from "../services/toast-service/toast.service";
 export class MovieComponent {
   reviewForm!: FormGroup;
   @Output() accessTokenEvent = new EventEmitter<string>();
-  @Input() movie = {"id": -1};
+  @Input() movie = {"id": -1, "name": "", "photo": "", "release_date": "", "ticket_price": 0, "genre": "", "director": "", "country": "", "description": ""};
 
   constructor(private http_caller: HttpCallerService, private toast: ToastService) {
 

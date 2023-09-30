@@ -12,7 +12,7 @@ export class MoviesListComponent {
   genres = [];
   directors = [];
   countries = [];
-  selectedMovie = {"id": -1};
+  selectedMovie = {"id": -1, "name": "", "photo": "", "release_date": "", "ticket_price": 0, "genre": "", "director": "", "country": "", "description": ""};
 
   constructor(private http_caller: HttpCallerService) {}
 
