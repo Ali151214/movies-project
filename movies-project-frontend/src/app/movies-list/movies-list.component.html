@@ -23,14 +23,15 @@
       <div class="row">
         <ng-container *ngFor="let movie of movies">
           <div class="col-sm-3 mb-3" (click)="OpenMovie(movie['id'])">
-            <div class="card">
-              <img src="{{movie['photo']}}" class="card-img-top">
+            <div class="card" style="height: 300px;">
+              <img style="height: 150px;" src="{{movie['photo']}}" class="card-img-top">
               <div class="card-body">
-                <h4 class="card-title">{{movie["name"]}}</h4>
-                <p class="card-text" style="font-size: 80%;">{{movie["description"]}}</p>
+                <span class="card-title" style="height: 20px; font-size: 18px; overflow: hidden;">{{movie["name"]}}</span>
               </div>
               <div class="card-footer">
-                <small class="text-muted">Updated {{movie["updated_at"]}}</small>
+                <span class="card-text" style="height: 11px; font-size: 10px; overflow: hidden;">Genre: {{movie["genre"]}}</span><br>
+                <span class="card-text" style="height: 11px; font-size: 10px; overflow: hidden;">Release Date: {{movie["genre"]}}</span><br>
+                <span class="card-text" style="height: 11px; font-size: 10px; overflow: hidden;">Ticket Price: {{movie["genre"]}}</span>
               </div>
             </div>
           </div>
