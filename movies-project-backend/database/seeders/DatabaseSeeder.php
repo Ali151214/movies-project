@@ -14,6 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(DefaultAdminSeeder::class);
+//        $this->call(DefaultAdminSeeder::class);
+//        $this->call(GenreSeeder::class);
+//        $this->call(DirectorSeeder::class);
+//        $this->call(CountrySeeder::class);
     }
 }
