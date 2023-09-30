@@ -15,9 +15,14 @@ class ReviewController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $reviews = Review::all();
+        if(isset($_GET["movie_id"])){
+            $reviews = Review::where("movie_id", $_GET["movie_id"])->get();
+        }
+        else{
+            $reviews = Review::all();
+        }
 
         return $this->sendResponse(ReviewResource::collection($reviews), 'Reviews retrieved successfully.');
     }
