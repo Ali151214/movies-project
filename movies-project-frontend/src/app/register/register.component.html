@@ -2,43 +2,40 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header bg-dark text-light">
-        <h5 class="modal-title" id="registerModalLabel">Register Form</h5>
+        <h2 class="modal-title">Register Form</h2>
         <button id="registerModalCloseButton" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form [formGroup]="registerForm" (ngSubmit)="registerFormSubmit()">
           <div class="mb-3">
-            <label for="id_name" class="form-label">Name</label>
+            <label class="form-label">Name</label>
             <input formControlName="name" [class.is-invalid]="nameField.touched && nameField.invalid" type="text"
-                   class="form-control" id="id_name">
+                   class="form-control">
             <div *ngIf="nameField.touched && nameField.hasError('required')" class="d-block invalid-feedback">Please
               provide a Name.</div>
           </div>
           <div class="mb-3">
-            <label for="id_email" class="form-label">Email address</label>
+            <label class="form-label">Email address</label>
             <input formControlName="email" [class.is-invalid]="emailField.touched && emailField.invalid" type="email"
-                   class="form-control" id="id_email">
+                   class="form-control">
             <div *ngIf="emailField.touched && emailField.hasError('required')" class="d-block invalid-feedback">Please
               provide a Email.</div>
             <div *ngIf="emailField.touched && emailField.hasError('email')" class="d-block invalid-feedback">Email
-              address is
-              not valid</div>
+              address is not valid</div>
           </div>
           <div class="mb-3">
-            <label for="id_Password" class="form-label">Password</label>
+            <label class="form-label">Password</label>
             <input formControlName="password" [class.is-invalid]="passwordField.touched && passwordField.invalid"
-                   type="password" class="form-control" id="id_Password">
+                   type="password" class="form-control">
             <div *ngIf="passwordField.touched && passwordField.hasError('required')" class="d-block invalid-feedback">
-              Please
-              provide a Password.</div>
+              Please provide a Password.</div>
           </div>
           <div class="mb-3">
-            <label for="id_ConfirmPassword" class="form-label">Confirm Password</label>
+            <label class="form-label">Confirm Password</label>
             <input formControlName="confirm_password" [class.is-invalid]="confirmPasswordField.touched && confirmPasswordField.invalid"
-                   type="password" class="form-control" id="id_ConfirmPassword">
+                   type="password" class="form-control">
             <div *ngIf="confirmPasswordField.touched && confirmPasswordField.hasError('required')" class="d-block invalid-feedback">
-              Please
-              provide a Password.</div>
+              Please provide a Password.</div>
             <div *ngIf="confirmPasswordField.touched && confirmPasswordField.hasError('password_mismatch')" class="d-block invalid-feedback">
               Password mismatch.</div>
           </div>

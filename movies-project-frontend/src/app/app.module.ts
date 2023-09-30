@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { LoaderComponent } from './loader/loader.component';
 import {ToastrModule} from "ngx-toastr";
+import { MovieComponent } from './movie/movie.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {ToastrModule} from "ngx-toastr";
     LoginComponent,
     RegisterComponent,
     LogoutComponent,
-    LoaderComponent
+    LoaderComponent,
+    MovieComponent
   ],
   imports: [
     BrowserModule,
