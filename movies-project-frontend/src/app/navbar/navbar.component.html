@@ -3,8 +3,11 @@
   <a class="navbar-brand" href="#">
     Watch Movie & Have Fun!
   </a>
-  <div class="form-inline">
-    <app-login></app-login>&nbsp;
-    <app-register></app-register>
+  <div class="form-inline" *ngIf="access_token == ''">
+    <app-login (accessTokenEvent)="AuthEvent($event)"></app-login>&nbsp;
+    <app-register (accessTokenEvent)="AuthEvent($event)"></app-register>
+  </div>
+  <div class="form-inline" *ngIf="access_token != ''">
+    <app-logout (accessTokenEvent)="AuthEvent($event)"></app-logout>
   </div>
 </nav>

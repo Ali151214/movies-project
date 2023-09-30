@@ -3,10 +3,10 @@
     <div class="modal-content">
       <div class="modal-header bg-dark text-light">
         <h5 class="modal-title" id="registerModalLabel">Register Form</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button id="registerModalCloseButton" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="registerForm" (ngSubmit)="registerFormSubmit">
+        <form [formGroup]="registerForm" (ngSubmit)="registerFormSubmit()">
           <div class="mb-3">
             <label for="id_name" class="form-label">Name</label>
             <input formControlName="name" [class.is-invalid]="nameField.touched && nameField.invalid" type="text"

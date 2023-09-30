@@ -9,9 +9,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 export class HttpCallerService {
   base_url = "http://localhost:8000/api/"
 
-  constructor(private http: HttpClient, private router: Router) {
-
-  }
+  constructor(private http: HttpClient, private router: Router) {}
 
   get(url: string, is_private = false): any {
     let header = new HttpHeaders()
@@ -20,6 +18,15 @@ export class HttpCallerService {
       header = header.append('Authorization', 'Bearer ' + access_token);
     }
     return this.http.get(this.base_url.concat(url), {headers: header})
+  }
+
+  post(url: string, data: any, is_private = false, headers = ''): any {
+    let request_headers = new HttpHeaders();
+    if (is_private){
+      let access_token = this.getAuthToken();
+      request_headers = request_headers.append('Authorization', 'Bearer ' + access_token);
+    }
+    return this.http.post(this.base_url.concat(url), data, {headers: request_headers})
   }
 
   setAuthToken(access_token: any) {
