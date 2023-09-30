@@ -42,8 +42,8 @@ class MovieController extends BaseController
             'director_id' => 'required|exists:App\Models\Director,id',
         ]);
 
-        $image_path = $request->file('photo')->store('', 'public');
-        $input["photo"] = $image_path;
+        $image_path = $request->file('photo')->store('image', 'public');
+        $input["photo"] = explode("/", $image_path)[1];
 
         if($validator->fails()){
             return $this->sendError('Validation Error.', $validator->errors());
