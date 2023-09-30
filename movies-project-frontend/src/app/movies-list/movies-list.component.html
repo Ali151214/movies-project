@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="card">
+        <div class="card-header">Filters</div>
+        <div class="card-body">Filters</div>
+      </div>
+    </div>
+    <div class="col-sm-9 row">
+      <div class="col-sm-3" *ngFor="let movie of movies">
+        <div class="card">
+          <img src="{{movie['photo']}}" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">{{movie["name"]}}</h5>
+            <p class="card-text" style="font-size: 70%;">{{movie["description"]}}</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Updated {{movie["updated_at"]}}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
