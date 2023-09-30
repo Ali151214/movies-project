@@ -24,7 +24,7 @@
         <ng-container *ngFor="let movie of movies">
           <div class="col-sm-3 mb-3" (click)="OpenMovie(movie['id'])">
             <div class="card" style="height: 300px;">
-              <img style="height: 150px;" src="{{movie['photo']}}" class="card-img-top">
+              <img style="height: 150px;" src="{{movie['photo']}}">
               <div class="card-body">
                 <span class="card-title" style="height: 20px; font-size: 18px; overflow: hidden;">{{movie["name"]}}</span>
               </div>
