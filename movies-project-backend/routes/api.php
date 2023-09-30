@@ -28,11 +28,16 @@ Route::controller(RegisterController::class)->group(function(){
     Route::post('login', 'login');
 });
 Route::resource('movies', MovieController::class);
-Route::resource('reviews', ReviewController::class);
+Route::controller(ReviewController::class)->group(function(){
+    Route::get('reviews', 'index');
+});
 
 #only for admin
 Route::middleware(['auth:sanctum', 'restrictRole:admin'])->group( function () {
     Route::resource('genres', GenreController::class);
     Route::resource('countries', CountryController::class);
     Route::resource('directors', DirectorController::class);
+    Route::controller(ReviewController::class)->group(function(){
+        Route::post('reviews', 'store');
+    });
 });
