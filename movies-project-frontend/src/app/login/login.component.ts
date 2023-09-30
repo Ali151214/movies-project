@@ -2,6 +2,7 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpCallerService} from "../services/http-caller-service/http-caller.service";
 import { Output, EventEmitter } from '@angular/core';
+import {ToastService} from "../services/toast-service/toast.service";
 
 
 @Component({
@@ -13,7 +14,7 @@ export class LoginComponent {
   loginForm!: FormGroup;
   @Output() accessTokenEvent = new EventEmitter<string>();
 
-  constructor(private http_caller: HttpCallerService) { }
+  constructor(private http_caller: HttpCallerService, private toast: ToastService) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -41,6 +42,7 @@ export class LoginComponent {
       let access_token = result["data"]["token"];
       this.http_caller.setAuthToken(access_token);
       this.accessTokenEvent.emit(access_token);
+      this.toast.showSuccessToast("Login successful.");
     });
   }
 }

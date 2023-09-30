@@ -15,6 +15,7 @@ import {HttpCallerInterceptor} from "./services/http-caller-interceptor/http-cal
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { LoaderComponent } from './loader/loader.component';
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { LoaderComponent } from './loader/loader.component';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
     {
