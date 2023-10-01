@@ -43,7 +43,19 @@ export class MoviesListComponent {
   }
 
   FetchMovies(){
-    this.http_caller.get("movies").subscribe((result: any) => {
+    let directors_filter = ""
+    if(this.selected_directors.length > 0){
+      directors_filter += "directors="+this.selected_directors.join(",");
+    }
+    let genres_filter = ""
+    if(this.selected_genres.length > 0){
+      genres_filter += "genres="+this.selected_genres.join(",");
+    }
+    let countries_filter = "";
+    if(this.selected_countries.length > 0){
+      countries_filter += "countries="+this.selected_countries.join(",");
+    }
+    this.http_caller.get("movies?"+directors_filter+"&"+genres_filter+"&"+countries_filter).subscribe((result: any) => {
       this.movies = result.data;
     });
   }
@@ -63,4 +75,52 @@ export class MoviesListComponent {
     });
   }
 
+  removeItemFromArray(element: any, array: any){
+    array.forEach( (item: any, index: number) => {
+      if(item === element) array.splice(index,1);
+    });
+    return array
+  }
+
+  selected_directors = []
+  onDirectorSelectionChange(event: Event) {
+    // @ts-ignore
+    if(event.target.checked){
+      // @ts-ignore
+      this.selected_directors.push(event.target.value);
+    }
+    else{
+      // @ts-ignore
+      this.selected_directors = this.removeItemFromArray(event.target.value, this.selected_directors);
+    }
+    this.FetchMovies();
+  }
+
+  selected_countries = []
+  onCountrySelectionChange(event: Event) {
+    // @ts-ignore
+    if(event.target.checked){
+      // @ts-ignore
+      this.selected_countries.push(event.target.value);
+    }
+    else{
+      // @ts-ignore
+      this.selected_countries = this.removeItemFromArray(event.target.value, this.selected_countries);
+    }
+    this.FetchMovies()
+  }
+
+  selected_genres = []
+  onGenreSelectionChange(event: Event) {
+    // @ts-ignore
+    if(event.target.checked){
+      // @ts-ignore
+      this.selected_genres.push(event.target.value);
+    }
+    else{
+      // @ts-ignore
+      this.selected_genres = this.removeItemFromArray(event.target.value, this.selected_genres);
+    }
+    this.FetchMovies();
+  }
 }

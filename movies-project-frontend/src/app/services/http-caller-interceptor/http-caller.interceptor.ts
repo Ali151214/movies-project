@@ -20,7 +20,9 @@ export class HttpCallerInterceptor implements HttpInterceptor {
     this.loaderService.show();
 
     return next.handle(request).pipe(
-      finalize(() => this.loaderService.hide()),
+      finalize(() =>
+        setTimeout(()=>{this.loaderService.hide()}, 1000)
+      ),
       // @ts-ignore
       catchError((error: HttpErrorResponse) => {
         let errorMsg = '';
