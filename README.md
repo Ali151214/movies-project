@@ -9,8 +9,10 @@ Clone the frontend branch and run the below commands to install required package
 * npm install
 * ng serve
 
-Node version: 
-Angular cli version: 16.2.4
+Versions
+
+* Node version: 18.18.0
+* Angular cli version: 16.2.4
 
 
 ## Backend - Laravel
@@ -22,8 +24,10 @@ Clone the backend branch and run the below command for setup.
 * php artisan db:seed
 * php artisan serve
 
-Php version: 8.0.2
-Laravel version: 9.19
+Versions
+
+* Php version: 8.0.2
+* Laravel version: 9.19
 
 
 # What i did?
