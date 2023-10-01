@@ -64,3 +64,8 @@ Versions
 * Unit tests
 * Better validations and error handling
 * Dashboard for admin to add or edit data
+
+
+# Total time spent?
+
+12-14 Hours
