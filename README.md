@@ -68,4 +68,4 @@ Versions
 
 # Total time spent?
 
-12-14 Hours
+12 to 14 Hours
