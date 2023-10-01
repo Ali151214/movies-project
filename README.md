@@ -31,32 +31,33 @@ Laravel version: 9.19
 
 ## Implemented following functionalities on frontend:
 
-• basic navbar layout with movie listing
-• Login, logout and register forms with api integration.
-• Mobile responsive layout with bootstrap
-• Form validation with angular forms
-• Loader while api call process in interceptor using material ui
-• Success and error toasts using ngx-toastr
-• Filtering movies with directors, genres and country
-• Movie review (rating + comment) form for authenticated users with api integration.
+* basic navbar layout with movie listing.
+* Login, logout and register forms with api integration.
+* Mobile responsive layout with bootstrap.
+* Form validation with angular forms.
+* Loader while api call process in interceptor using material ui.
+* Success and error toasts using ngx-toastr.
+* Filtering movies with directors, genres and country.
+* Movie review (rating + comment) form for authenticated users with api integration.
+* Pagination
 
 ## Implemented following functionalities on backend:
 
-• User authentication using sanctum
-• Custom middleware for authorisation. 2 Roles (admin & user)
-• CRUD Apis for Genre, Director, Country, Movie and Review
-• Few routes are for public, few for authenticated users and few for only admin. (Eg: only admin can create movies and others can only view)
-• Seeders to seed some fake data using Faker package in factories
-• relevant migrations, models and resource classes.
-
+* User authentication using sanctum
+* Custom middleware for authorisation. 2 Roles (admin & user)
+* CRUD Apis for Genre, Director, Country, Movie and Review
+* Few routes are for public, few for authenticated users and few for only admin. (Eg: only admin can create movies and others can only view)
+* Seeders to seed some fake data using Faker package in factories
+* relevant migrations, models and resource classes.
 
 
 # What i could have done to improve? Which I couldn’t do, due to shortage of time.
 
-• Extensive searching and filtering feature
-• Better UI/UX on frontend
-• Reports (eg: most watched movie etc.)
-• Unit tests
-• Better validations and error handling
-• Dashboard for admin to add or edit data
+
+* Extensive searching and filtering feature
+* Better UI/UX on frontend
+* Reports (eg: most watched movie etc.)
+* Unit tests
+* Better validations and error handling
+* Dashboard for admin to add or edit data
 
