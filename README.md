@@ -28,7 +28,9 @@ Laravel version: 9.19
 
 # What i did?
 
+
 ## Implemented following functionalities on frontend:
+
 • basic navbar layout with movie listing
 • Login, logout and register forms with api integration.
 • Mobile responsive layout with bootstrap
@@ -39,6 +41,7 @@ Laravel version: 9.19
 • Movie review (rating + comment) form for authenticated users with api integration.
 
 ## Implemented following functionalities on backend:
+
 • User authentication using sanctum
 • Custom middleware for authorisation. 2 Roles (admin & user)
 • CRUD Apis for Genre, Director, Country, Movie and Review
