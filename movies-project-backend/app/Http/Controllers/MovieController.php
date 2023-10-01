@@ -15,9 +15,23 @@ class MovieController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $movies = Movie::all();
+        $movies = Movie::where("name", "!=", "null");
+
+        if(isset($_GET["directors"])){
+            $movies = $movies->whereIn("director_id", explode(",", $_GET["directors"]));
+        }
+
+        if(isset($_GET["countries"])){
+            $movies = $movies->whereIn("country_id", explode(",", $_GET["countries"]));
+        }
+
+        if(isset($_GET["genres"])){
+            $movies = $movies->whereIn("genre_id", explode(",", $_GET["genres"]));
+        }
+
+        $movies = $movies->get();
 
         return $this->sendResponse(MovieResource::collection($movies), 'Movies retrieved successfully.');
     }
